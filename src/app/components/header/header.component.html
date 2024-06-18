@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul *ngIf="!isLogin" class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="about">about</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="cart">cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="categories">categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="products">products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="home">Home</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mt-2  mt-lg-0" >
+      <li  class="nav-item d-flex align-items-center ">
+        <i class="fab mx-2 fa-facebook "></i>
+        <i class="fab mx-2 fa-youtube "></i>
+        <i class="fab mx-2 fa-instagram "></i>
+        <i class="fab mx-2 fa-x "></i>
+      </li>
+      <li *ngIf="!isLogin" class="nav-item">
+       <a class="nav-link" routerLink="register">Register</a>
+      </li>
+      <li *ngIf="!isLogin" class="nav-item">
+        <a class="nav-link" routerLink="login">Login</a>
+       </li>
+  
+       <li *ngIf="isLogin" class="nav-item">
+        <a class="nav-link" routerLink="login">Logout</a>
+       </li>
+  
+       <li  class="nav-item">
+        <a class="nav-link" routerLink="setting">setting</a>
+       </li>
+      </ul>
+    </div>
+  </div>
+</nav>

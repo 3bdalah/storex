@@ -1,0 +1,27 @@
+
+<div class="w-75 mx-auto py-4">
+    <h2>Login Now:   </h2>
+    <form (ngSubmit)="handleLogin(loginForm)" [formGroup]="loginForm">
+      
+      <label for="email">email: </label>
+      <input formControlName="email" type="email" class="form-control mb-2" id="email"/>
+      <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert alert-danger">
+        <p *ngIf="loginForm.get('email')?.getError('email')" class="m-0"> you must have 'copy' gmail.com </p>
+   
+        <p  *ngIf="loginForm.get('email')?.getError('required')" class="m-0">email is Required</p>
+       </div>
+      <label for="password">password: </label>
+      <input formControlName="password" type="password" class="form-control mb-2" id="password"/>
+      <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="alert alert-danger">
+        <p *ngIf="loginForm.get('password')?.getError('pattern')" class="m-0">Your password needs to be at least 6 characters long and include a mix of uppercase and lowercase letters, numbers, and symbols.</p>
+        <!-- <p  *ngIf="loginForm.get('name')?.getError('maxlength')" class="m-0">Name maxLength is 15</p> -->
+        <p  *ngIf="loginForm.get('password')?.getError('required')" class="m-0">Name is Required</p>
+       </div>
+     
+    
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-info">
+        <i  *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+        <span *ngIf="!isLoading">login</span>
+      </button>
+    </form>
+  </div>

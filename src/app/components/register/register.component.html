@@ -1,0 +1,50 @@
+
+<div class="w-75 mx-auto py-4">
+  <h2>Register Now:   </h2>
+  <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
+    <label for="name">name: </label>
+    <input formControlName="name" type="text" class="form-control mb-2" id="name"/>
+     <div *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched" class="alert alert-danger">
+      <p *ngIf="registerForm.get('name')?.getError('minlength')" class="m-0">Name minLength is 3</p>
+      <p  *ngIf="registerForm.get('name')?.getError('maxlength')" class="m-0">Name maxLength is 15</p>
+      <p  *ngIf="registerForm.get('name')?.getError('required')" class="m-0">Name is Required</p>
+     </div>
+
+    <label for="email">email: </label>
+    <input formControlName="email" type="email" class="form-control mb-2" id="email"/>
+    <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert alert-danger">
+      <p *ngIf="registerForm.get('email')?.getError('email')" class="m-0"> you must have 'copy' gmail.com </p>
+ 
+      <p  *ngIf="registerForm.get('email')?.getError('required')" class="m-0">email is Required</p>
+     </div>
+    <label for="password">password: </label>
+    <input formControlName="password" type="password" class="form-control mb-2" id="password"/>
+    <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="alert alert-danger">
+      <p *ngIf="registerForm.get('password')?.getError('pattern')" class="m-0">Your password needs to be at least 6 characters long and include a mix of uppercase and lowercase letters, numbers, and symbols.</p>
+      <!-- <p  *ngIf="registerForm.get('name')?.getError('maxlength')" class="m-0">Name maxLength is 15</p> -->
+      <p  *ngIf="registerForm.get('password')?.getError('required')" class="m-0">Name is Required</p>
+     </div>
+    <label for="rePassword">rePassword: </label>
+    <input formControlName="rePassword" type="password" class="form-control mb-2" id="rePassword"/>
+    <div *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched" class="alert alert-danger">
+      <p *ngIf="registerForm.get('rePassword')?.getError('pattern')" class="m-0">Use a mix of uppercase and lowercase letters (e.g., A-Z, a-z)
+        Include numbers (e.g., 0-9)
+        Consider using symbols (e.g., !  #$%^&*)
+        Aim for at least 6 characters (longer is better).</p>
+      <!-- <p  *ngIf="registerForm.get('name')?.getError('maxlength')" class="m-0">Name maxLength is 15</p> -->
+      <p  *ngIf="registerForm.get('rePassword')?.getError('required')" class="m-0">Name is Required</p>
+     </div>
+    <label for="phone">Phone: </label>
+    <input formControlName="phone" type="tel" class="form-control mb-2" id="phone"/>
+    <div *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched" class="alert alert-danger">
+      <p *ngIf="registerForm.get('phone')?.getError('pattern')" class="m-0">pattern like tel egyption like 01123344510 is 3</p>
+      <!-- <p  *ngIf="registerForm.get('phone')?.getError('maxlength')" class="m-0">phone maxLength is 15</p> -->
+      <p  *ngIf="registerForm.get('phone')?.getError('required')" class="m-0">phone is Required</p>
+     </div>
+  
+    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-info">
+      <i  *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+      <span *ngIf="!isLoading">register</span>
+    </button>
+  </form>
+</div>
