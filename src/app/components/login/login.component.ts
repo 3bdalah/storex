@@ -11,14 +11,14 @@ import { AuthService } from 'src/app/servics/auth.service';
 export class LoginComponent {
   loginForm!: FormGroup;
 
-  constructor(private _authServ: AuthService, private _Router: Router) {}
+  constructor(private _authServ: AuthService, private router: Router) {}
   isLoading: boolean = false;
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
       password: new FormControl(null, [
         Validators.required,
-        Validators.pattern(/^[A-Z][a-z0-9]{5,10}$/),
+        
       ]),
     });
   }
@@ -27,11 +27,14 @@ export class LoginComponent {
     if (loginForm.valid) {
       this._authServ.login(loginForm.value).subscribe({
         next: (response) => {
-          if (response.message === 'success') {
+          const msg = response.message;
+          console.log("response login",response.message); 
+          if (msg == 'success') {
             this.isLoading = false;
             localStorage.setItem("tokenUser",response.token);
             this._authServ.decodedUserData();
-            this._Router.navigate(['/home']);
+           
+            this.router.navigate(['/home']);
           }
         },
         error: (response) => {

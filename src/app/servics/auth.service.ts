@@ -15,12 +15,12 @@ export class AuthService {
    }
 
   decodedUserData(){
-    let encodedToken = JSON.stringify(localStorage.getItem('userToken'));
-    let decodedToken : any =jwtDecode(encodedToken);
+    let encodedToken:any = localStorage.getItem('tokenUser');
+    const decodedToken:any =jwtDecode(encodedToken);
     this.userData.next( decodedToken);
   }
   register(userData:object): Observable<any>{
-    return this._http.post('https://route-ecommerce.onrender.com/api/v1/auth/signup',userData);
+    return this._http.post('https://ecommerce.routemisr.com/api/v1/auth/signup',userData);
   }
   
   logout(){
@@ -29,6 +29,6 @@ export class AuthService {
     this._router.navigate(['/login']);
   }
   login(userData:object): Observable<any>{
-    return this._http.post('https://route-ecommerce.onrender.com/api/v1/auth/login',userData);
+    return this._http.post('https://ecommerce.routemisr.com/api/v1/auth/signin',userData);
   }
 }

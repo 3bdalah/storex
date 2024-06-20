@@ -1,3 +1,7 @@
 .h-img{
-    height:200px;
+    height:250px;
+}
+
+.full-h-img{
+    height: 100% !important;
 }

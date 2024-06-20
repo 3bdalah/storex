@@ -21,8 +21,8 @@ export class ProductDetailsComponent implements OnInit {
     this._productsServ.getProductDetails(this.productID).subscribe( {
       next:(r)=>{
         console.log("data product",r)
-        this.productData = r;
-        this.srcIMG = this.productData?.images[0];
+        this.productData = r.data;
+        this.srcIMG = this.productData?.imageCover;
         console.log(this.productData);
       }
     })

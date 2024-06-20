@@ -1,1 +1,22 @@
-<p>cart works!</p>
+<div class="bg-main-light p-4 my-4 ">
+<h3>shop Cart</h3>
+<div class="row align-items-center my-4" *ngFor="let product of cardDetailes.products" >
+ <div class="col-md-1">
+                    <img [src]="product.product.imageCover" alt="" class="w-100"/>
+</div>
+<div class="col-md-11 d-flex flex-nowrap justify-content-between align-items-center">
+    <div>
+        <h6>{{product.product.title}}</h6>
+        <h6 class="text-main ">price : {{product.price }}</h6>
+        <button (click)="removeItem(product.product._id)" class="btn m-0 p-0"><i class="fa fa-trash-can" ></i> remove</button>
+    </div>
+    <div>
+         <button  (click)="updateItemCount(product.product._id,product.count+1)" class="btn   btn-sm">+</button>
+         <span class="mx-2">{{product.count}}</span>
+        <button (click)="updateItemCount(product.product._id,product.count-1)" class="btn">-</button>
+    </div>
+ </div>
+</div>
+
+<h6 class="text-main"> totla price :{{cardDetailes?.totalCartPrice}} EGP</h6>
+</div>

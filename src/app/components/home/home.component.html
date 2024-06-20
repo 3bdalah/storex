@@ -6,13 +6,13 @@
     <div class="p-2 col-lg-3 p-2 product" *ngFor="let product of products | search : searchLetters ">
         <a [routerLink]="['/productdetails',product.id]">
             <div class="card">
-                <img [src]="product.images[0]" class="card-img-top" alt="{{ product.title }}">
+                <img [src]="product.images[0]" class="card-img-top w-80 h-80" alt="{{ product.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.title }}</h5>
                     <p class="card-text">{{ product.description | summarize }}</p>
                     <p class="card-text text-muted fw-bold font-sm">Price: {{ product.price }} EGP</p>
                 </div>
-                <div class="btn bg-main  text-white w-100">
+                <div (click)="addToCart(product.id)" class="btn bg-main  text-white w-100">
       Add +
                 </div>
             </div>
@@ -20,3 +20,11 @@
     </div>
   </div>
   
+  <div class="my-4 mt-10" *ngIf="totalPages > 1">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <button *ngFor="let page of generatePages(totalPages)" (click)="changePage(page)"
+            [ngClass]="{'active': currentPage === page}">
+      {{ page }}
+    </button>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div>
