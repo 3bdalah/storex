@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { CartService } from 'src/app/servics/cart.service';
 
 @Component({
@@ -8,12 +9,15 @@ import { CartService } from 'src/app/servics/cart.service';
 })
 export class CartComponent implements OnInit {
   cardDetailes:any = null;
-
+  // cartId = new BehaviorSubject(null);
   constructor(private _cartServ:CartService){}
   ngOnInit(): void {
    this._cartServ.getLoggedUser().subscribe({
     next:(res)=>{
+      console.log("cart data",res.data);
+
       this.cardDetailes = res.data;
+      // this.cartId.next(res.data._id);
     },
     error:(err)=>{console.log(err);
     }

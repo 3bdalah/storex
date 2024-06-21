@@ -20,6 +20,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import {BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SearchPipe } from './pipes/search.pipe';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { SearchPipe } from './pipes/search.pipe';
     SummarizePipe,
     ProductDetailsComponent,
     SearchPipe,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

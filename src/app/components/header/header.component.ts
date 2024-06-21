@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
     this._authserv.userData.subscribe({
       next:()=>{
-        if(this._authserv.userData.getValue() !== null){
+        if(this._authserv.userData.getValue() != null){
          this.isLogin =true;
         }else{
           this.isLogin = false;

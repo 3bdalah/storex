@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { authGuard } from './auth.guard';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [{
   path:"",redirectTo:'home',pathMatch:"full"
@@ -29,6 +30,9 @@ const routes: Routes = [{
 },
 {
   path:"login",component:LoginComponent,title:"login"
+},
+{
+  path:"checkout",component:CheckoutComponent,title:"checkout"
 },
 {
   path:"register",component:RegisterComponent,title:"register"

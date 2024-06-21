@@ -13,10 +13,11 @@
     <div>
          <button  (click)="updateItemCount(product.product._id,product.count+1)" class="btn   btn-sm">+</button>
          <span class="mx-2">{{product.count}}</span>
-        <button (click)="updateItemCount(product.product._id,product.count-1)" class="btn">-</button>
+        <button  (click)="updateItemCount(product.product._id,product.count-1)" class="btn">-</button>
     </div>
  </div>
 </div>
 
 <h6 class="text-main"> totla price :{{cardDetailes?.totalCartPrice}} EGP</h6>
+<button routerLink="/checkout" class="btn bg-main text-main text-white text-bold">Payment</button>
 </div>
