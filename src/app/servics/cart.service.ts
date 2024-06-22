@@ -9,9 +9,12 @@ export class CartService {
   urlCart:string = "https://ecommerce.routemisr.com/api/v1/cart";
   headerUser:any = {token : localStorage.getItem("tokenUser")};
   cartId = new BehaviorSubject("");
+  numberOfCartItems= new BehaviorSubject(0);
   constructor(private _http:HttpClient) {
     this.getLoggedUser().subscribe({
       next: (res)=>{
+        console.log("res cart",res);
+        this.numberOfCartItems.next(res.numOfCartItems);
       this.cartId.next(res.data._id);
       }
     })

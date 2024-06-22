@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   userData= new BehaviorSubject(null);
   constructor(private _http:HttpClient,private _router:Router) {
-    if(localStorage.getItem("userToken") !== null){
+    if(localStorage.getItem("tokenUser") !== null){
      this.decodedUserData();
     }
    }

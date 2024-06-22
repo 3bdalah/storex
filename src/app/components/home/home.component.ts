@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit{
   searchLetters:string="";
   pageSize = 10; 
   totalPages: number =0 ; 
-
+ loading :boolean =false;
   constructor(private _productsServies:ProductsService,private _cartService: CartService){}
   ngOnInit(): void {
    
@@ -36,12 +36,15 @@ export class HomeComponent implements OnInit{
 
 
   getProducts(pageNumber:number){
+    this.loading=true;
     this._productsServies.getProducts(pageNumber).subscribe({
       next:(response)=>{this.products = response.data;console.log('products',response)
+        
         this.currentPage = response.metadata.currentPage;
         this.totalPages = response.metadata.numberOfPages;  
         console.log("meta data",response.metadata)   
         this.generatePages(this.totalPages);
+        this.loading=false;
       },
       error:()=>{},
     });
@@ -55,6 +58,7 @@ export class HomeComponent implements OnInit{
   addToCart(productId:string){
      this._cartService.addToCart(productId).subscribe({
        next:(res)=>{console.log("response add to cart",res);
+        this._cartService.numberOfCartItems.next(res.numOfCartItems)
        },
        error: (err)=>{console.log(err);
        }

@@ -44,6 +44,7 @@ export class CartComponent implements OnInit {
     this._cartServ.removeProduct(productId).subscribe({
       next:(res) => {
         this.cardDetailes = res.data;
+        this._cartServ.numberOfCartItems.next(res.numOfCartItems)
       },
       error:(error)=> {console.log(error);
       }
