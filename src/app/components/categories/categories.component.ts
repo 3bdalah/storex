@@ -14,7 +14,7 @@ export class CategoriesComponent implements OnInit {
     
 
     this._productsServies.getCategories().subscribe({
-      next:(cat)=>{this.categories = cat.data;console.log(cat.data);
+      next:(cat)=>{this.categories = cat.data;console.log('categories',cat.data);
       },
       error:(error)=>console.log(error),
     })
@@ -36,10 +36,10 @@ export class CategoriesComponent implements OnInit {
         items: 2
       },
       740: {
-        items: 3
+        items: 4
       },
       940: {
-        items: 4
+        items: 6
       }
     },
     nav: false

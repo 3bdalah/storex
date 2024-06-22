@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { authGuard } from './auth.guard';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [{
   path:"",redirectTo:'home',pathMatch:"full"
@@ -32,6 +33,9 @@ const routes: Routes = [{
   path:"login",component:LoginComponent,title:"login"
 },
 {
+  path:"wishlist",component:WishlistComponent,title:"checkout"
+},
+{
   path:"checkout",component:CheckoutComponent,title:"checkout"
 },
 {
@@ -39,6 +43,7 @@ const routes: Routes = [{
 },{
   path:"setting",loadChildren:()=> import('./settings/settings.module').then((model)=> model.SettingsModule)
 },
+
 {
   path:"**",component:NotfoundComponent,title:"Not Found"
 }];

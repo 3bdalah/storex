@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/servics/auth.service';
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/servics/auth.service';
 export class LoginComponent {
   loginForm!: FormGroup;
 
-  constructor(private _authServ: AuthService, private router: Router) {}
+  constructor(private _authServ: AuthService, private router: Router, private toast:ToastrService) {}
   isLoading: boolean = false;
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -27,9 +28,12 @@ export class LoginComponent {
     if (loginForm.valid) {
       this._authServ.login(loginForm.value).subscribe({
         next: (response) => {
+          console.log("resonponse login",response);
+    
           const msg = response.message;
           console.log("response login",response.message); 
           if (msg == 'success') {
+            this.toast.success("ya alf 300 Welcome");
             this.isLoading = false;
             localStorage.setItem("tokenUser",response.token);
             this._authServ.decodedUserData();

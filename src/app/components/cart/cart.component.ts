@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { CartService } from 'src/app/servics/cart.service';
 
@@ -10,7 +11,7 @@ import { CartService } from 'src/app/servics/cart.service';
 export class CartComponent implements OnInit {
   cardDetailes:any = null;
   // cartId = new BehaviorSubject(null);
-  constructor(private _cartServ:CartService){}
+  constructor(private _cartServ:CartService, private toast:ToastrService ){}
   ngOnInit(): void {
    this._cartServ.getLoggedUser().subscribe({
     next:(res)=>{
@@ -30,6 +31,7 @@ export class CartComponent implements OnInit {
         res.data.products.forEach((element:any) => {
           
           if(element.count==0){
+                //  this.toast.success("removed Item")
                  this.removeItem(productId);
           }
         });
@@ -44,6 +46,8 @@ export class CartComponent implements OnInit {
     this._cartServ.removeProduct(productId).subscribe({
       next:(res) => {
         this.cardDetailes = res.data;
+        console.log("response remove item",res);
+        if(res.status==="success") this.toast.success("Removed Item");
         this._cartServ.numberOfCartItems.next(res.numOfCartItems)
       },
       error:(error)=> {console.log(error);

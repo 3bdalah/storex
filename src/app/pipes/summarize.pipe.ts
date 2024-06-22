@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'summarize'
 })
 export class SummarizePipe implements PipeTransform {
-  transform(value: string, limit: number = 30): string {
+  transform(value: string, limit: number = 20): string {
     if (value.length <= limit) {
       return value;
     }

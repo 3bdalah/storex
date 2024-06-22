@@ -1,7 +1,26 @@
+.card-categories{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+}
 .h-img{
-    height:250px;
+    height:100px;
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
+.owl-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: center;
+}
 .full-h-img{
+    width: 100% !important;
     height: 100% !important;
 }

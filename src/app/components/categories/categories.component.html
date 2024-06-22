@@ -1,10 +1,14 @@
 
 <owl-carousel-o [options]="customOptions">
 
-    <ng-container *ngFor="let cat of categories">
-      <ng-template carouselSlide [id]="cat.id">
-     <div class="h-img">
-      <img [src]="cat?.image" class="full-h-img" [alt]="cat.name" [title]="cat.title">
+    <ng-container *ngFor="let cat of categories" class="card-categories">
+      <ng-template carouselSlide [id]="cat.id" class="card-categories owl-item">
+     <div class="owl-content">
+      <div class="h-img">
+        <img [src]="cat?.image" class="full-h-img" [alt]="cat.name" [title]="cat.title">
+       </div>
+       <span>{{cat.name}}</span>      
+
      </div>
       </ng-template>
     </ng-container>

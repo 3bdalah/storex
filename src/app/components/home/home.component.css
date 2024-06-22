@@ -6,3 +6,48 @@
     width:100%;
 
 }
+.card-product{
+    border:2px solid #efefef;
+    background-color: #efefef;
+}
+.card-product a{
+    text-decoration: none;
+     color: black;
+}
+.card-product .card-body-parent{
+    margin-top: 10px;
+}
+.card-content{
+    position:relative;
+}
+.icons-card{
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    width: 45px;
+    height:45px;
+    text-align: center;
+    line-height: 2.5;
+    color:gray;
+    position: absolute;
+    border:1px solid #eee;
+    right:5px;
+}
+.add-to-wishlist{
+ top:10px;
+}
+.btn-add-to-cart{
+    top:60px;
+}
+
+.discount{
+    color:rgb(150, 150, 150) !important;
+    text-decoration: line-through;
+    font-weight: 500 !important;
+}
+.color-discount{
+    color:rgb(156, 8, 8) !important;
+}
+.yellow{
+    color:#ffc01f
+}

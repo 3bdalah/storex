@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit ,ViewChild} from '@angular/core';
 import { ProductsService } from 'src/app/servics/products.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from 'src/app/servics/cart.service';
+import { ToastrService } from 'ngx-toastr';
+import { WishlistService } from 'src/app/servics/wishlist.service';
+// import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +19,7 @@ export class HomeComponent implements OnInit{
   pageSize = 10; 
   totalPages: number =0 ; 
  loading :boolean =false;
-  constructor(private _productsServies:ProductsService,private _cartService: CartService){}
+  constructor(private _productsServies:ProductsService,private _cartService: CartService,private toastr: ToastrService,private _wishlist:WishlistService){}
   ngOnInit(): void {
    
     this.getProducts(this.currentPage);
@@ -33,6 +36,8 @@ export class HomeComponent implements OnInit{
     )
     
   }
+
+  @ViewChild('productImageRef') productImageRef: ElementRef<HTMLImageElement> | undefined;
 
 
   getProducts(pageNumber:number){
@@ -58,6 +63,7 @@ export class HomeComponent implements OnInit{
   addToCart(productId:string){
      this._cartService.addToCart(productId).subscribe({
        next:(res)=>{console.log("response add to cart",res);
+        if(res.status === "success")this.toastr.success("Added To Cart");
         this._cartService.numberOfCartItems.next(res.numOfCartItems)
        },
        error: (err)=>{console.log(err);
@@ -65,6 +71,17 @@ export class HomeComponent implements OnInit{
      })      
   }
 
+  
+  addToWish(productId:string){
+    this._wishlist.addToWish(productId).subscribe({
+      next:(res)=>{console.log("response add to wish",res);
+       if(res.status === "success")this.toastr.success("Added To wish list");
+       this._wishlist.numberOfWishListItems.next(res.data.length)
+      },
+      error: (err)=>{console.log(err);
+      }
+    })      
+ }
   changePage(pageNumber: number) {
     if (pageNumber > 0 && pageNumber <= this.totalPages) {
       this.currentPage = pageNumber;
@@ -79,6 +96,14 @@ export class HomeComponent implements OnInit{
     }
     return pages;
   }
+
+  changeImage(images: string[], imageElement: any) {    
+    imageElement.src = images[1];
+    imageElement.addEventListener('mouseout', () => {
+      imageElement.src = images[0];
+    });
+  }
+  
 
   customOptions: OwlOptions = {
     loop: true,

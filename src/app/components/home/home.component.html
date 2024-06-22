@@ -1,30 +1,84 @@
-<div class="row d-flex ">
-    <app-categories></app-categories>
-    <div class="w-80" >
-            <input [(ngModel)]="searchLetters" type="text" placeholder="search by letter"/>
-    </div>
-    <div class="p-2 col-lg-3 p-2 product" *ngFor="let product of products | search : searchLetters ">
-        <a [routerLink]="['/productdetails',product.id]">
-            <div class="card">
-                <img [src]="product.images[0]" class="card-img-top w-80 h-80" alt="{{ product.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.title }}</h5>
-                    <p class="card-text">{{ product.description | summarize }}</p>
-                    <p class="card-text text-muted fw-bold font-sm">Price: {{ product.price }} EGP</p>
-                </div>
-                <div (click)="addToCart(product.id)" class="btn bg-main  text-white w-100">
-      Add +
-                </div>
-            </div>
-        </a>
-    </div>
+<div class="row d-flex">
+  <app-categories></app-categories>
+  <div class="w-80">
+    <input
+      [(ngModel)]="searchLetters"
+      type="text"
+      placeholder="search by letter"
+    />
   </div>
   
-  <div class="my-4 mt-10" *ngIf="totalPages > 1">
-    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-    <button *ngFor="let page of generatePages(totalPages)" (click)="changePage(page)"
-            [ngClass]="{'active': currentPage === page}">
-      {{ page }}
-    </button>
-    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  <div
+  
+    class="card-product col-lg-3 py-2"
+    *ngFor="let product of products | search : searchLetters"
+  >
+    <a
+    
+      [routerLink]="['/productdetails', product.id]"
+      class="text-decoration-none"
+    >
+      <div class="card-content">
+        <img
+        [src]="product.images[0]"
+        alt="{{ product.title }}"
+        class="w-100 h-100 product-image"
+        (mouseover)="changeImage(product.images, productImageRef)"
+        #productImageRef
+      />
+        <div class="card-body-parent">
+           
+            <div class="card-body d-flex justify-content-between flex-row">
+              <h5 class="card-title font-sm">
+                  {{ product.title | summarize : 20 }}
+                </h5>
+                <p *ngIf="product.priceAfterDiscount" class="color-discount card-text text-muted fw-bold font-sm">
+                  {{ product.priceAfterDiscount }} EGP
+                </p>
+            </div>
+            <div class="card-body d-flex justify-content-between flex-row">
+                <h5 class="card-title font-sm">
+                    <i class="fa-solid fa-star " [ngClass]="product.ratingsQuantity? 'yellow' : '' " ></i> {{ product.ratingsAverage }} (<span *ngIf="product.ratingsQuantity">{{product.ratingsQuantity}}</span>)
+                  </h5>
+                  <p [ngClass]="product.priceAfterDiscount? 'discount':'' " class="card-text text-muted fw-bold font-sm">
+                    {{ product.price }} EGP
+                  </p>
+              </div>
+        </div>
+        <div>
+          <button
+            (click)="addToWish(product.id)"
+            class="add-to-wishlist icons-card"
+          >
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <button
+            (click)="addToCart(product.id)"
+            class="btn-add-to-cart icons-card"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
+      </div>
+    </a>
   </div>
+</div>
+
+<div class="my-4 mt-10" *ngIf="totalPages > 1">
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+    Previous
+  </button>
+  <button
+    *ngFor="let page of generatePages(totalPages)"
+    (click)="changePage(page)"
+    [ngClass]="{ active: currentPage === page }"
+  >
+    {{ page }}
+  </button>
+  <button
+    (click)="changePage(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
+    Next
+  </button>
+</div>

@@ -1,0 +1,24 @@
+.list-profile{
+    list-style: none;
+    background: #f5f5dc;
+    position: absolute ;
+    top:30px;
+    right:0;
+    margin-left: 0;
+    padding-block-start: 0;
+    width: 150px;
+    padding-left: 0;
+    border-radius: 5px;
+    z-index: 9999;
+    /* height: 150px; */
+}
+.list-profile li{
+    padding: 5px 10px;
+    /* padding:5px; */
+    text-transform: capitalize;
+}
+.list-profile li:hover{
+    background: white;
+    font-weight: 600;
+    transition: 0.4s;
+}
