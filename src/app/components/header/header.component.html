@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="#"  routerLink="home">Sylos</a>
+    <a class="navbar-brand" href="#" routerLink="home">Sylos</a>
     <button
       class="navbar-toggler d-lg-none"
       type="button"
@@ -13,54 +13,47 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul *ngIf="isLogin" class="navbar-nav me-auto mt-2 mt-lg-0">
-      
-       
-        
+      <ul *ngIf="isLogin" class="navbar-nav me-auto mt-2 mt-lg-0 ul-center">
         <li class="nav-item">
           <a class="nav-link" href="#" routerLink="categories">categories</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" routerLink="products">products</a>
         </li>
-       
       </ul>
 
-      <ul class="navbar-nav ms-auto mt-2  mt-lg-0" >
-    
-      <li *ngIf="!isLogin" class="nav-item">
-       <a class="nav-link" routerLink="register">Register</a>
-      </li>
-      <li *ngIf="!isLogin" class="nav-item">
-        <a class="nav-link" routerLink="login">Login</a>
-       </li>
-  
-       <li *ngIf="isLogin" class="nav-item" (click)="Logout()">
-        <a class="nav-link" routerLink="login">Logout</a>
-       </li>
-  
-       <li  *ngIf="isLogin" class="nav-item">
-        <a class="nav-link position-relative" routerLink="cart">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span class=" badge red">{{numItemsCart}}</span>
-        </a>
-       </li>
-       <li  *ngIf="isLogin" class="nav-item">
-        <a class="nav-link position-relative" routerLink="wishlist">
-          <i class="fa-solid fa-heart"></i>
-          <span class=" badge red">{{numItemsWish}}</span>
-        </a>
-       </li>
-       <li   *ngIf="isLogin" class="nav-item" (click)="toggleMenu()">
-        <a class="nav-link position-relative">
-          <i class="fa-solid fa-user"></i>
-          <div *ngIf="openMenu">
-            <app-menu-profile ></app-menu-profile>
-          </div>
-        </a>
-       </li>
-  
-       
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li *ngIf="!isLogin" class="nav-item">
+          <a class="nav-link" routerLink="register">Register</a>
+        </li>
+        <li *ngIf="!isLogin" class="nav-item">
+          <a class="nav-link" routerLink="login">Login</a>
+        </li>
+
+        <li *ngIf="isLogin" class="nav-item" (click)="Logout()">
+          <a class="nav-link" routerLink="login">Logout</a>
+        </li>
+
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link position-relative" routerLink="cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="badge red">{{ numItemsCart }}</span>
+          </a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link position-relative" routerLink="wishlist">
+            <i class="fa-solid fa-heart"></i>
+            <span class="badge red">{{ numItemsWish }}</span>
+          </a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item" (click)="toggleMenu()">
+          <a class="nav-link position-relative cursor-pointer">
+            <i class="fa-solid fa-user"></i>
+            <div *ngIf="openMenu">
+              <app-menu-profile></app-menu-profile>
+            </div>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

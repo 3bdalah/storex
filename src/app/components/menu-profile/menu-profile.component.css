@@ -6,10 +6,11 @@
     right:0;
     margin-left: 0;
     padding-block-start: 0;
-    width: 150px;
+    width: 350px;
     padding-left: 0;
     border-radius: 5px;
     z-index: 9999;
+    cursor: pointer;
     /* height: 150px; */
 }
 .list-profile li{
