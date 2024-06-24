@@ -1,0 +1,7 @@
+.btn-guest{
+    background-color:rgb(39, 179, 85);
+    color:white;
+    font-weight: 600;
+    text-transform: capitalize;
+    border:2px solid rgb(39, 179, 85)
+}

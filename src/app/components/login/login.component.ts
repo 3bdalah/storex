@@ -4,6 +4,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/servics/auth.service';
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,9 +17,10 @@ import { AuthService } from 'src/app/servics/auth.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-
-  constructor(private _authServ: AuthService, private router: Router, private toast:ToastrService) {}
+  guestForm!: FormGroup;
   isLoading: boolean = false;
+  guestLoad:boolean=false;
+  constructor(private _authServ: AuthService, private router: Router, private toast:ToastrService) {}
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
@@ -22,11 +29,16 @@ export class LoginComponent {
         
       ]),
     });
+
+    this.guestForm = new FormGroup({
+      email: new FormControl('ahmedmutti@gmail.com'), // Pre-fill email for guest
+      password: new FormControl('Ahmed@123'), // Pre-fill password for guest
+       // Disable guest form by default
+    });
   }
-  handleLogin(loginForm: FormGroup) {
+  handleLoginLogic(loginForm:Credential) {
     this.isLoading = true;
-    if (loginForm.valid) {
-      this._authServ.login(loginForm.value).subscribe({
+      this._authServ.login(loginForm).subscribe({
         next: (response) => {
           console.log("resonponse login",response);
     
@@ -47,6 +59,18 @@ export class LoginComponent {
         },
         // complete:(response) => console.log("response from compelete",response),
       });
+    
+  }
+
+  handleLogin(loginForm: FormGroup) {
+    if (loginForm.valid) {
+      this.handleLoginLogic(loginForm.value);
     }
+  }
+  hanldeGuest(){
+    this.guestLoad = true;
+    console.log(this.guestForm.value,'log guest');
+    
+     this.handleLoginLogic(this.guestForm.value);
   }
 }
