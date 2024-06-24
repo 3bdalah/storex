@@ -1,4 +1,4 @@
-<div class="bg-main-light p-4 my-4 ">
+<div class="bg-main-light p-4 ">
 <h3>shop Cart</h3>
 <div class="row align-items-center my-4" *ngFor="let product of cardDetailes.products" >
  <div class="col-md-1">
@@ -11,9 +11,9 @@
         <button (click)="removeItem(product.product._id)" class="btn m-0 p-0"><i class="fa fa-trash-can" ></i> remove</button>
     </div>
     <div>
-         <button  (click)="updateItemCount(product.product._id,product.count+1)" class="btn   btn-sm">+</button>
-         <span class="mx-2">{{product.count}}</span>
-        <button  (click)="updateItemCount(product.product._id,product.count-1)" class="btn">-</button>
+         <button  (click)="updateItemCount(product.product._id,product.count+1)" class="btn btn-update btn-sm"><i class="fa-solid fa-plus"></i></button>
+         <span class="mx-3">{{product.count}}</span>
+        <button  (click)="updateItemCount(product.product._id,product.count-1)" class="btn btn-update btn-sm"><i class="fa-solid fa-minus"></i></button>
     </div>
  </div>
 </div>

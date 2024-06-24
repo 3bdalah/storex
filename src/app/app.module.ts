@@ -24,6 +24,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { MenuProfileComponent } from './components/menu-profile/menu-profile.component';
+import { FilterBrandComponent } from './components/filter-brand/filter-brand.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { MenuProfileComponent } from './components/menu-profile/menu-profile.com
     CheckoutComponent,
     WishlistComponent,
     MenuProfileComponent,
+    FilterBrandComponent,
   ],
   imports: [
     CommonModule,

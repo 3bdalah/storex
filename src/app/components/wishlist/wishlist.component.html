@@ -1,1 +1,21 @@
-<p>wishlist works!</p>
+<div class="bg-main-light p-4">
+  <h3>Wish-List</h3>
+  <div class=" align-items-center my-4" *ngFor="let product of listWish">
+   <a href="#" [routerLink]="['/productdetails', product._id]" class="d-flex justifiy-content-start">
+    <div class="col-md-1 mx-2">
+        <img [src]="product.imageCover" alt="" class="w-100" />
+      </div>
+      <div
+        class="col-md-11 d-flex flex-nowrap justify-content-between align-items-center"
+      >
+        <div>
+          <h6>{{ product.title }}</h6>
+          <button (click)="removeItem(product._id)" class="btn m-0 p-0">
+            <i class="fa fa-trash-can"></i> remove
+          </button>
+        </div>
+      </div>
+    </a>
+    <hr class="w-100"/>
+  </div>
+</div>

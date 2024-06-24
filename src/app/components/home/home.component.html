@@ -22,10 +22,11 @@
         <img
         [src]="product.images[0]"
         alt="{{ product.title }}"
-        class="w-100 h-100 product-image"
+        class="w-100 h-100 product-image "
         (mouseover)="changeImage(product.images, productImageRef)"
         #productImageRef
       />
+      <span  [ngClass]="product.priceAfterDiscount? 'sale text-sm':'no-sale' ">Sale</span>
         <div class="card-body-parent">
            
             <div class="card-body d-flex justify-content-between flex-row">

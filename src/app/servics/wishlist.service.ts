@@ -28,4 +28,7 @@ export class WishlistService {
   getLoggedUserWhistList():Observable<any>{
     return this._http.get(this.urlWish,{headers:this.headerUser});
   }
+  removeProduct(productId:string):Observable<any> {
+    return this._http.delete(this.urlWish+'/'+productId,{headers:this.headerUser});
+  }
 }

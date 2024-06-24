@@ -1,0 +1,40 @@
+.product-title{
+    font-weight: bold;
+    font-size: 32px;
+    color:black;
+    text-transform: capitalize;
+}
+.btn-add-to-cart{
+    border:1px solid #fff;
+    border-radius: 4px;
+    background-color: black;
+    transition: 0.5s;
+}
+.btn-add-to-cart:hover{
+   background-color: #eee;
+   border: 1px solid black;
+   color:black !important;
+}
+.reviews{
+    color:rgb(10, 133, 86);
+    font-weight: 500;
+    /* text-transform: capitalize; */
+    font-size: 14px;
+}
+.brand{
+    color:rgb(19, 146, 83);
+    background-color: rgba(19, 146, 83,0.3);
+    padding:4px 10px;
+    border-radius: 5px;
+}
+.category{
+    background-color: rgba(255, 228, 196,0.3);
+    color:rgb(255, 165, 56);
+    padding:4px 10px;
+    border-radius: 5px;
+}
+.discount{
+    color:rgb(150, 150, 150) !important;
+    text-decoration: line-through;
+    font-weight: 500 !important;
+}

@@ -1,21 +1,49 @@
-<p>product-details works!</p>
+
 
 <div class="row py-4">
     <div class="col-md-4">
-       
-<img class="w-100" [src]="srcIMG"/>
+        <owl-carousel-o [options]="customOptions">
+
+            <ng-container *ngFor="let cat of productData.images" class="card-categories">
+              <ng-template carouselSlide [id]="cat.id" class="card-categories owl-item">
+                <img [src]="cat"  [alt]="cat" [title]="cat">
+             
+              </ng-template>
+            </ng-container>
+        
+          </owl-carousel-o>
+        <!-- <img class="w-100" [src]="srcIMG" /> -->
     </div>
-    <div class="col-md-8">
-        <div class=" d-flex align-items-start justifiy-content-start flex-column" >
-           
-                <h5 class="card-title">{{ productData?.title }}</h5>
-                <p class="card-text">{{ productData?.description | summarize }}</p>
-                <p class="card-text text-muted fw-bold font-sm">Price: {{ productData?.price }} EGP</p>
+    <div class="col-md-6 offset-md-1 ">
+        <div class="d-flex align-items-start justifiy-content-start flex-column">
+            <h5 class="product-title">{{ productData?.title }}</h5>
+            <!-- <p class="card-text">{{ productData?.description  }}</p> -->
+             <div>
+                 <span class="card-text text-muted fw-bold font-sm">
+                     <i class="fa-solid fa-star yellow"></i> {{ productData?.ratingsAverage }}  <span class="reviews">( {{productData?.ratingsQuantity}} reviews )</span> | <span class="sold">{{productData?.sold}} sold</span> | <span class="qountity">{{productData?.quantity}} inStocks</span>
+                 </span>
+             </div>
+            <div class="card-text text-muted my-2">
+             <h2  *ngIf="productData?.priceAfterDiscount">{{ productData?.priceAfterDiscount }} EGP </h2>
+             <h2 [ngClass]="productData?.priceAfterDiscount? 'discount':'' " class="card-text text-muted fw-bold font-sm">{{ productData?.price }} EGP </h2>
             </div>
-            <div class="btn bg-main  text-white w-50">
-  Add +
+            <p class="badge font-sm text-black">
+                Brand : <span class="brand">{{ productData?.brand.name }}</span> 
+            </p>
+            <p class="badge font-sm text-black">
+                Category : <span class="category">{{ productData?.subcategory[0].name }}</span> 
+            </p>
+            <hr class="w-100"/>
             
+            <p class="  text-muted fw-bold font-sm">
+                  <i class="fa-solid fa-circle-check"></i> Free Shipping  
+            </p>
+             
+            <p class=" text-muted  mb-25">
+                More Info  :  {{productData?.description}}  
+             </p>
         </div>
+        <div class="btn btn-add-to-cart text-white text-bold w-50" (click)="addToCart(productData?.id)">Add To Cart <i class="fa-solid fa-cart-shopping"></i></div>
+        <div class="btn btn-add-to-cart text-white text-bold w-50" (click)="addToWish(productData?.id)">Add To wishlist <i class="fa-solid fa-heart"></i></div>
     </div>
-    
 </div>
