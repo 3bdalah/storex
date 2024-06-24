@@ -4,41 +4,28 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/servics/auth.service';
-
-interface LoginCredentials {
-  email: string;
-  password: string;
-}
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginForm!: FormGroup;
-  guestForm!: FormGroup;
-  isLoading: boolean = false;
-  guestLoad:boolean=false;
-  constructor(private _authServ: AuthService, private router: Router, private toast:ToastrService) {}
-  ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.email, Validators.required]),
-      password: new FormControl(null, [
-        Validators.required,
-        
-      ]),
-    });
 
-    this.guestForm = new FormGroup({
-      email: new FormControl('ahmedmutti@gmail.com'), 
-      password: new FormControl('Ahmed@123'), 
-    
-    });
+  constructor(private _authServ: AuthService, private router: Router, private toast:ToastrService) {}
+  isLoading: boolean = false;
+  loginForm:FormGroup = new FormGroup({
+    email: new FormControl(null, [Validators.email, Validators.required]),
+    password: new FormControl(null, [
+      Validators.required,
+      
+    ]),
+  });
+  ngOnInit(): void {
   }
-  handleLoginLogic(loginForm:LoginCredentials) {
+  handleLogin(ValueForm:any) {
     this.isLoading = true;
-      this._authServ.login(loginForm).subscribe({
+    
+      this._authServ.login(ValueForm).subscribe({
         next: (response) => {
           console.log("resonponse login",response);
     
@@ -62,15 +49,12 @@ export class LoginComponent {
     
   }
 
-  handleLogin(loginForm: FormGroup) {
+  handleValidForm(loginForm: FormGroup){
     if (loginForm.valid) {
-      this.handleLoginLogic(loginForm.value);
+      this.handleLogin(loginForm.value);
     }
   }
   hanldeGuest(){
-    this.guestLoad = true;
-    console.log(this.guestForm.value,'log guest');
-    
-     this.handleLoginLogic(this.guestForm.value);
+   this.handleLogin({email:"ahmedmutti@gmail.com",password:"Ahmed@123"});
   }
 }

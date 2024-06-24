@@ -1,10 +1,10 @@
 
 <div class="w-50 mx-auto py-4 vh-100">
     <h2>Login   </h2>
-    <form (ngSubmit)="handleLogin(loginForm)" [formGroup]="loginForm">
+    <form (ngSubmit)="handleValidForm(loginForm)" [formGroup]="loginForm">
       
       <label for="email">Email: </label>
-      <input formControlName="email" type="email" class="form-control mb-2" id="email"/>
+      <input formControlName="email" type="email" class="form-control mb-2" id="email" value="ahmedmutti@gmail.com"/>
       <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert alert-danger">
         <p *ngIf="loginForm.get('email')?.getError('email')" class="m-0"> you must have 'copy' gmail.com </p>
    
@@ -19,13 +19,13 @@
        </div>
      
     
-      <button *ngIf="!guestLoad" type="submit" [disabled]="loginForm.invalid" class="btn btn-info w-100">
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-info w-100">
         <i  *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
         <span *ngIf="!isLoading">login</span>
       </button>
 
       <button  (click)="hanldeGuest()"  class="btn btn-info w-100 my-3 btn-guest">
-        <i  *ngIf="guestLoad" class="fa fa-spinner fa-spin"></i>
+     
         <span *ngIf="!isLoading"> try As A guset</span>
       </button>
       
