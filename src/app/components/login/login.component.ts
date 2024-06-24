@@ -31,12 +31,12 @@ export class LoginComponent {
     });
 
     this.guestForm = new FormGroup({
-      email: new FormControl('ahmedmutti@gmail.com'), // Pre-fill email for guest
-      password: new FormControl('Ahmed@123'), // Pre-fill password for guest
-       // Disable guest form by default
+      email: new FormControl('ahmedmutti@gmail.com'), 
+      password: new FormControl('Ahmed@123'), 
+    
     });
   }
-  handleLoginLogic(loginForm:Credential) {
+  handleLoginLogic(loginForm:LoginCredentials) {
     this.isLoading = true;
       this._authServ.login(loginForm).subscribe({
         next: (response) => {
