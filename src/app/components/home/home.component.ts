@@ -4,6 +4,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from 'src/app/servics/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from 'src/app/servics/wishlist.service';
+import { BrandsService } from 'src/app/servics/brands.service';
 // import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -14,12 +15,13 @@ import { WishlistService } from 'src/app/servics/wishlist.service';
 export class HomeComponent implements OnInit{
   products:any[]=[];
   categories:any[]=[];
+ brandsItems:any[]=[];
   currentPage :number=1;
   searchLetters:string="";
   pageSize = 10; 
   totalPages: number =0 ; 
  loading :boolean =false;
-  constructor(private _productsServies:ProductsService,private _cartService: CartService,private toastr: ToastrService,private _wishlist:WishlistService){}
+  constructor(private _productsServies:ProductsService,private _cartService: CartService,private toastr: ToastrService,private _wishlist:WishlistService,private brands:BrandsService){}
   ngOnInit(): void {
    
     this.getProducts(this.currentPage);
@@ -31,9 +33,12 @@ export class HomeComponent implements OnInit{
     });
 
     this._productsServies.getBrands().subscribe({
-      next: (brands)=> {console.log('brands',brands.data)}
+      next: (brands)=> {console.log('brands',brands.data)
+        this.brandsItems = brands.data;
+      }
       }
     )
+    
     
   }
 

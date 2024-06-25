@@ -1,19 +1,28 @@
-<div class="w-50 mx-auto my-5">
+<div class="w-50 mx-auto  vh-100 py-20">
     <form [formGroup]="shippingAddress"     (ngSubmit)="handleSubmit(shippingAddress)">
 
     
 
         <label for="details">Details : </label>
         <input type="text"  class="form-control mb-2" formControlName="details" id="details"/>
-        
+        <div *ngIf="shippingAddress.get('details')?.errors && shippingAddress.get('details')?.touched" class="alert alert-danger">
+            
+            <p  *ngIf="shippingAddress.get('details')?.getError('required')" class="m-0">details is Required</p>
+           </div>
         <label for="phone">phone : </label>
         <input type="text"  class="form-control mb-2" formControlName="phone" id="phone"/>
-        
+        <div *ngIf="shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.touched" class="alert alert-danger">
+            
+            <p  *ngIf="shippingAddress.get('phone')?.getError('required')" class="m-0">phone is Required</p>
+           </div>
         <label for="city">city : </label>
         <input type="text"  class="form-control mb-2" formControlName="city" id="city"/>
+        <div *ngIf="shippingAddress.get('city')?.errors && shippingAddress.get('city')?.touched" class="alert alert-danger">
+            
+            <p  *ngIf="shippingAddress.get('city')?.getError('required')" class="m-0">city is Required</p>
+           </div>
 
-
-         <button type="submit">pay</button>
+         <button type="submit" class="btn d-block mx-auto w-50 btn-pay">pay</button>
     </form>
 
 </div>

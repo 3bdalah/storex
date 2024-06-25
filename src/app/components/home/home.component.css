@@ -1,3 +1,137 @@
+.main-image {
+    min-height:100vh;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.433), rgba(94, 122, 145, 0.4)), url(./../../../assets/home2.jpg) center center / cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items:center;
+}
+
+.content-main {
+
+}
+
+.content-main .head-store{
+  color:white;
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.content-main .btn-more{
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 10px 20px;
+    color:#464646;
+    font-weight: 600;
+   margin-top: 20px;    
+   background-color: antiquewhite;
+   transition: 0.5s;
+}
+.content-main .btn-more:hover{
+    background-color: transparent;
+    color: azure;
+}
+
+.servics{
+    /* margin: 15px 0px; */
+ overflow: hidden;
+ background: white;
+ padding: 20px 0px;
+}
+
+.servics .icon-serve{
+    border-radius: 5px;
+    padding: 10px 15px;
+    /* margin-bottom: 10px; */
+    background-color: #f2f4f7;
+}
+
+.servics .title-serve{
+    margin-top: 20px;
+    color: #464646;
+}
+.servics .info-serve{
+    color:#aaa;
+    text-transform: lowercase;
+    line-height: 1.2;
+}
+
+.brands {
+    margin-top: 20px;
+}
+.brands .grid-brands{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(4,1fr);
+    /* grid-template-areas: "one one one" "two two two "; */
+    gap:10px;
+    height:500px;
+    width: 100%;
+}
+
+.brands .grid-brands .img-box-brand{
+    border-radius: 5px;
+    overflow: hidden;
+    height:100%;
+    transition: 0.5s;
+    /* background: url(./../../../assets/brand-1.jpg); */
+    /* position: relative; */
+}
+.one{
+    grid-column: span 2;
+    grid-row: 2/4;
+}
+.two{
+
+    grid-row:span 2;    
+    grid-column: span 2 ;
+}
+.five{
+    
+    grid-row:span 1;    
+    grid-column: span 2 ;
+}
+.four{
+    grid-row: span 1;
+    grid-column: 1/2;
+}
+.six{
+    grid-row: 2 / 3;
+}
+.seven{
+    grid-row: span 2 ;
+}
+.brands .grid-brands .img-box-brand img{
+    width: 100%;
+    object-fit: cover;
+    height:100%
+}
+.brands .grid-brands .img-box-brand:hover img{
+    transform:scale(1.3,1.3);
+
+    transition: 0.5s;
+    transform: rotate(14deg,180deg);
+}
+
+
+@media (max-width: 576px) {
+    /* For screens less than 576px wide */
+    
+    .brands .grid-brands {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, auto);
+        height:800px;
+    }
+    .brands .img-box-brand , .one,.two,.three,.six,.five ,.seven {
+        grid-column: 1;
+        /* grid-row: 1; */
+    }
+    .two{
+        grid-row: 1;
+    }
+   
+  }
+  
 .card{
     position: relative;
 }
@@ -19,6 +153,9 @@
     font-size: 10px;
     padding:2px 7px;
 
+}
+.no-sale{
+    display: none;
 }
 .card-product{
     border:2px solid #efefef;
