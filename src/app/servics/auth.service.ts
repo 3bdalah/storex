@@ -23,6 +23,7 @@ export class AuthService {
     return this._http.post('https://ecommerce.routemisr.com/api/v1/auth/signup',userData);
   }
   
+
   logout(){
     localStorage.removeItem("tokenUser");
     this.userData.next(null);
@@ -30,5 +31,8 @@ export class AuthService {
   }
   login(userData:object): Observable<any>{
     return this._http.post('https://ecommerce.routemisr.com/api/v1/auth/signin',userData);
+  }
+  getUserData():Observable<any>{
+     return this.userData.asObservable();
   }
 }

@@ -7,8 +7,11 @@
     rgba(145, 158, 171, 0.14) 0px 2px 4px -1px;
   --rating-color: #ffc908;
 }
+.row{
+  margin: 0 !important;
+}
 body {
-  background-color: #efefef;
+  /* background-color: #efefef; */
 }
 .rating-color {
   color: var(--rating-color);

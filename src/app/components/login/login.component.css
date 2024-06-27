@@ -1,7 +1,55 @@
+.row{
+    margin: 0 !important;
+}
 .btn-guest{
     background-color:rgb(39, 179, 85);
     color:white;
     font-weight: 600;
     text-transform: capitalize;
     border:2px solid rgb(39, 179, 85)
+}
+.container-login{
+    background-color: white;
+    /* height: 100vh; */
+    align-items: center !important;
+    padding: 25px 0px;
+    /* border: 1px solid #aaa; */
+    /* box-shadow: 10x 10px 3px #aaa; */
+}
+
+.title-form{
+   color: #7020BB;
+   text-transform:capitalize
+}
+.img-box-login{
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+}
+.img-box-login img{
+    width: 100%;
+    height:100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.btn-login{
+   background-color:  #5b8bda;
+   color:white;
+   text-transform: capitalize;
+   font-weight: 700;
+}
+
+.account-guest{
+    border:1px solid rgb(218, 156, 23);
+    border-radius: 4px;
+    width: 100%;
+    height: 80px;
+    margin-top: 20px;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: rgba(218, 156, 23,0.2);
+
 }

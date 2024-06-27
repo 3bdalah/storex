@@ -1,7 +1,10 @@
 <main class="main-image">
-  <div class="content-main">
-    <h1 class="head-store">level up you style with our summer collections</h1>
-    <button class="btn-more" routerLink="/products">Showe More</button>
+  <div  class="container">
+
+    <div class="content-main">
+      <h1 class="head-store">level up you style with our summer collections</h1>
+      <button class="btn-more" routerLink="/products">Showe More</button>
+    </div>
   </div>
   <!-- <img src="./../../../assets/home2.jpg" alt=""/> -->
 </main>
@@ -49,49 +52,47 @@
 <section class="brands">
   <div class="container">
     <div class="grid-brands">
-      <div class="img-box-brand">
-        <img src="./../../../assets/brand-01.jpg" alt="brand-one" />
-      </div>
 
-      <div class="img-box-brand">
-        <img src="./../../../assets/brand-02.jpg" alt="brand-one" />
-      </div>
-
-      <div class="img-box-brand">
-        <img src="./../../../assets/brand-03.jpg" alt="brand-one" />
-      </div>
       <div class="img-box-brand one">
-        <img src="./../../../assets/brand-04.jpg" alt="brand-one" />
+        <div class="content-brand">
+          <a href="#" routerLink="/products">H&M          </a>
+       </div>
+        <img src="./../../../assets/brand-1.jpg" alt="brand-one" />
       </div>
-
       <div class="img-box-brand two">
-        <img src="./../../../assets/brand-02.jpg" alt="brand-one" />
+        <div class="content-brand">
+          <a href="#" routerLink="/products">Mango          </a>
+       </div>
+        <img src="./../../../assets/brand-2.jpg" alt="brand-one" />
       </div>
 
       <div class="img-box-brand three">
-        <img src="./../../../assets/brand-05.jpg" alt="brand-one" />
+        <div class="content-brand">
+          <a href="#" routerLink="/products">Oysho</a>
+       </div>
+        <img src="./../../../assets/brand-3.jpg" alt="brand-one" />
       </div>
-
-      <div class="img-box-brand six">
-        <img src="./../../../assets/brand-04.jpg" alt="brand-one" />
+      <div class="img-box-brand four">
+        <div class="content-brand">
+          <a href="#" routerLink="/products">Lefties</a>
+        </div>
+        <img src="./../../../assets/brand-4.jpg" alt="brand-one" />
       </div>
-      <div class="img-box-brand">
-        <img src="./../../../assets/brand-01.jpg" alt="brand-one" />
-      </div>
-
-      <div class="img-box-brand">
-        <img src="./../../../assets/brand-1.jpg" alt="brand-one" />
-      </div>
+      
+      
     </div>
   </div>
 </section>
+
+
 <div class="container">
   <div class="row d-flex">
     <div class="my-5">
       <app-categories></app-categories>
     </div>
-    <div class="w-80">
+    <div class=" col-md-12">
       <input
+      class="w-100"
         [(ngModel)]="searchLetters"
         type="text"
         placeholder="search by letter"

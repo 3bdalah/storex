@@ -37,4 +37,7 @@ export class CartService {
   onlinePayment(shippingAddress:any,cartId:string):Observable<any> {
     return this._http.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200`,{shippingAddress:shippingAddress},{headers:this.headerUser});
   }
+  getNumberOfCart():Observable<any>{
+    return this.numberOfCartItems.asObservable();
+  }
 }
