@@ -28,10 +28,11 @@
              <h2 [ngClass]="productData?.priceAfterDiscount? 'discount':'' " class="card-text text-muted fw-bold font-sm">{{ productData?.price }} EGP </h2>
             </div>
             <p class="badge font-sm text-black">
+                <!-- {{console.log(productData)}} -->
                 Brand : <span class="brand">{{ productData?.brand.name }}</span> 
             </p>
             <p class="badge font-sm text-black">
-                Category : <span class="category">{{ productData?.subcategory[0].name }}</span> 
+                Category : <span class="category">{{ productData?.subcategory[0]?.name }}</span> 
             </p>
             <hr class="w-100"/>
             
@@ -60,7 +61,7 @@
 </p>
              
             <p class=" text-muted  mb-25">
-                More Info  :  {{productData?.description}}  
+                More Info  :  {{productData?.data?.description}}  
              </p>
         </div>
         <div class="btn btn-add-to-cart text-white text-bold w-50" (click)="addToCart(productData?.id)">Add To Cart <i class="fa-solid fa-cart-shopping"></i></div>
